@@ -50,6 +50,7 @@ def h(range):
     return range[1]-range[0]
 
 def func(x):
+
     a = calculateA(Fxn)
     c = calculateC(h(otrezoki[0]), len(otrezoki)-1)
     d = calculateD(c,otrezoki)
