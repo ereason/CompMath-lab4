@@ -1,6 +1,5 @@
 import numpy as np
 
-
 # данные 1 варианта
 #Xn = np.array([1, 2, 3, 4, 5])
 #Fxn = np.array([4., 2., 8., 1., -1.])
@@ -52,7 +51,15 @@ def h(range):
 
 def func(x):
     a = calculateA(Fxn)
-    c = calculateC(h(otrezoki[0]),len(otrezoki)-1)
+    c = calculateC(h(otrezoki[0]), len(otrezoki)-1)
     d = calculateD(c,otrezoki)
     b = calculateB(c,Fxn,otrezoki)
+    i = 0
+    k = otrezoki[0][0]
+    for j in range(len(otrezoki)):
+        if  otrezoki[i][0] < x and x > otrezoki[i][1]:
+            k = otrezoki[i][0]
+            i = j
+            break
 
+    return a[i]+b[i]*(x-k) + c[i]*(x-k)*(x-k) + d[i]*(x-k)*(x-k)*(x-k)
