@@ -11,10 +11,16 @@ def axisSetUp():
     ax.spines['left'].set_position(('data', 0))
 
 
-def build(f):
+def build(f,Xn):
     axisSetUp()
 
-    t1 = np.arange(-10, 10, 0.1)
-    plt.plot(t1, f(t1))
+    x = np.arange(Xn[0], Xn[-1], 0.1)
+
+    y = [f(x[i]) for i in range(len(x))]
+    plt.plot(x, y)
+
+    buff = [f(Xn[i]) for i in range(len(Xn))]
+    for i_x, i_y in zip(Xn,buff):
+        plt.text(i_x, i_y, '({}, {})'.format(i_x, i_y))
 
     plt.show()
